@@ -5,10 +5,6 @@ const { auth } = require('../middlewares/index');
 const setResponseStatus = require('../../utils/utils');
 const router = Router();
 
-function setResponseStatus(successCode, failureCode, ok) {
-	return ok ? successCode : failureCode;
-}
-
 router.post(
 	'/uploadSingle/:userId',
 	auth,
