@@ -10,7 +10,7 @@ if (!envFound) {
 	throw new Error("⚠️  Couldn't find .env file  ⚠️");
 }
 module.exports = {
-	port: parseInt(process.env.PORT, 10),
+	port: process.env.PORT || 4000,
 	databaseURL: process.env.DB_CONNECTION,
 	databaseTestURL: process.env.DB_CONNECTION_TEST,
 	jwtSecret: process.env.JWT_SECRET,
