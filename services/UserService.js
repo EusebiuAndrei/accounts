@@ -54,8 +54,9 @@ class UserService {
 				user.emailToken,
 				user.email,
 			);
+			const token = await user.generateAuthToken();
 
-			return { success: true, data: { user } };
+			return { success: true, data: { user }, token };
 		} catch (error) {
 			// Logger.error(error);
 			return {
