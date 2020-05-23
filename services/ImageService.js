@@ -12,7 +12,7 @@ class ImageService {
 		try {
 			const fileUpload = new Resize(imagePath);
 			const filename = await fileUpload.save(buffer);
-			const newPath = `http://${hostname}/images/${filename}`;
+			const newPath = `https://${hostname}/images/${filename}`;
 
 			await this.db.Client.updateOne(
 				{ userId },
@@ -36,7 +36,7 @@ class ImageService {
 				const filename = await fileUpload.save(
 					buffers.buffer,
 				);
-				const newPath = `http://${hostname}/images/${filename}`;
+				const newPath = `https://${hostname}/images/${filename}`;
 				await uploadedImages.push(newPath);
 			}
 
@@ -63,7 +63,7 @@ class ImageService {
 		try {
 			const fileUpload = new Resize(imagePath);
 			const filename = await fileUpload.save(buffer);
-			const newPath = `http://${hostname}/images/${filename}`;
+			const newPath = `https://${hostname}/images/${filename}`;
 
 			await this.db.Menu.updateOne(
 				{
