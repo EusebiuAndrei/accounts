@@ -35,7 +35,6 @@ const findByEmailToken = async function (emailToken) {
 
 const findByEmail = async function (email) {
 	const user = await this.findOne({ email });
-
 	if (!user) {
 		throw new Error('Invalid email!');
 	}

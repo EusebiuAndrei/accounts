@@ -363,6 +363,26 @@ class UserService {
 			};
 		}
 	}
+
+	async getUserByEmail(email){
+		try{
+			const user = await this.db.User.findByEmail(email);
+			console.log("am user-ul")
+			return {
+				success: true,
+				data: user,
+			};
+
+		} catch(error){
+			Logger.error(error);
+			return {
+				success: false,
+				error: { message: error.message },
+			};
+		}
+	}
+
+	
 }
 
 module.exports = UserService;
