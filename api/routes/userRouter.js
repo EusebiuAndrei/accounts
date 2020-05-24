@@ -34,13 +34,12 @@ router.get('/:userId', async (req, res) => {
 	);
 });
 
-
 router.post('/verifyLoginFacebook', async (req, res) => {
 	const { email } = req.body;
 	const result = await userService.getUserByEmail(email);
-	 res.status(setResponseStatus(200, 400, result.success)).json(
-	 	result,
-	 );
+	res.status(setResponseStatus(200, 400, result.success)).json(
+		result,
+	);
 });
 
 router.post(
@@ -165,6 +164,8 @@ router.post(
 );
 
 router.post('/profile', auth, dynamicCelebrate, async (req, res) => {
+	console.log(req.data);
+	console.log(req.content);
 	const result = await userService.configureUser(
 		req.data,
 		req.content,
