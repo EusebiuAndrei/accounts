@@ -36,9 +36,10 @@ class CourseService {
 					},
 				},
 			]);
-			course[0]['userId'] = await this.db.Provider.findOne({
-				_id: course[0]['providerId'],
-			}).userId;
+			course[0]['userId'] = '1234';
+			//await this.db.Provider.findOne({
+			// 	_id: course[0]['providerId'],
+			// }).userId;
 			if (course.length === 0) throw new Error('Not found');
 			return { success: true, data: course };
 		} catch (error) {
