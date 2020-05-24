@@ -23,7 +23,7 @@ class CourseService {
 				},
 				{
 					$group: {
-						providerId: { $first: '$providerId' },
+						providerId: { $first: '$_id' },
 						_id: '$courses._id',
 						name: { $first: '$courses.name' },
 						category: { $first: '$courses.category' },
@@ -36,7 +36,10 @@ class CourseService {
 					},
 				},
 			]);
-
+			course[userId] = this.db.findOne({
+				_id: course.providerId,
+			});
+			console.log(course);
 			if (course.length === 0) throw new Error('Not found');
 			return { success: true, data: course };
 		} catch (error) {

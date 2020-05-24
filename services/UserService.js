@@ -303,7 +303,6 @@ class UserService {
 
 			const condition = { userId };
 			const options = {
-				upsert: true,
 				new: true,
 				useFindAndModify: false,
 			};
@@ -364,16 +363,15 @@ class UserService {
 		}
 	}
 
-	async getUserByEmail(email){
-		try{
+	async getUserByEmail(email) {
+		try {
 			const user = await this.db.User.findByEmail(email);
-			console.log("am user-ul")
+			console.log('am user-ul');
 			return {
 				success: true,
 				data: user,
 			};
-
-		} catch(error){
+		} catch (error) {
 			Logger.error(error);
 			return {
 				success: false,
@@ -381,8 +379,6 @@ class UserService {
 			};
 		}
 	}
-
-	
 }
 
 module.exports = UserService;
