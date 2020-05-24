@@ -303,6 +303,7 @@ class UserService {
 
 			const condition = { userId };
 			const options = {
+				upsert: true,
 				new: true,
 				useFindAndModify: false,
 			};
@@ -332,9 +333,9 @@ class UserService {
 				}
 			}
 
-			const userNow = await this.db.User.findOne({
-				_id: userId,
-			});
+			// const userNow = await this.db.User.findOne({
+			// 	_id: userId,
+			// });
 
 			return { success: true, data: { userDetails } };
 		} catch (error) {
