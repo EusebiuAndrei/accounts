@@ -1,7 +1,6 @@
 const multer = require('multer');
 
 const fileFilter = (req, file, cb) => {
-	//reject a file
 	if (
 		file.mimetype === 'image/png' ||
 		file.mimetype === 'image/jpeg' ||
@@ -14,9 +13,6 @@ const fileFilter = (req, file, cb) => {
 };
 
 const upload = multer({
-	limits: {
-		fileSize: 4 * 1024 * 1024,
-	},
 	fileFilter: fileFilter,
 });
 
