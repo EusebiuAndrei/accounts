@@ -37,7 +37,7 @@ class CourseService {
 				},
 			]);
 			const user = await this.db.Provider.findOne({
-				_id: course[0]['providerId'],
+				_id: mongoose.Types.ObjectId(course[0]['providerId']),
 			});
 			course[0]['userId'] = user;
 			if (course.length === 0) throw new Error('Not found');
