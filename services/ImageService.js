@@ -16,14 +16,14 @@ class ImageService {
 
 			await this.db.Client.updateOne(
 				{ userId },
-				{ $set: { avatar: uploadedImages } },
+				{ $set: { avatar: newPath } },
 			);
 
 			return { success: true, name: { newPath } };
 		} catch (error) {
 			return {
 				success: false,
-				error: error,
+				error: 'Please provide a valid image!',
 			};
 		}
 	}
