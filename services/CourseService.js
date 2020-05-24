@@ -36,7 +36,7 @@ class CourseService {
 					},
 				},
 			]);
-			const user = await this.db.Provider.findOne({
+			const user = await this.db.Provider.find({
 				_id: mongoose.Types.ObjectId(course[0]['providerId']),
 			});
 			course[0]['userId'] = user;
