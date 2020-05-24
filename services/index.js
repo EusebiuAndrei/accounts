@@ -73,6 +73,7 @@ const clientService = new ClientService({
 const courseService = new CourseService({
 	db: {
 		Menu,
+		Provider,
 	},
 	services: {},
 });
