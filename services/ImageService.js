@@ -2,6 +2,8 @@ const Resize = require('./Resize');
 const imagePath = './public/images';
 const mongoose = require('mongoose');
 
+const deleted = 'deleted';
+
 class ImageService {
 	constructor({ db, services }) {
 		this.db = db;
@@ -81,15 +83,14 @@ class ImageService {
 		}
 	}
 
-	async deleteProviderImage(userId){
+	async deleteProviderImage(userId) {
 		try {
-			
 			await this.db.Provider.updateOne(
 				{ userId },
-				{ $unset: { images: "" } },
+				{ $unset: { images: '' } },
 			);
 
-			return { success: true, name: { "deleted" } };
+			return { success: true, name: { deleted } };
 		} catch (error) {
 			return {
 				success: false,
@@ -98,15 +99,14 @@ class ImageService {
 		}
 	}
 
-	async deleteClientImage(userId){
+	async deleteClientImage(userId) {
 		try {
-			
 			await this.db.Client.updateOne(
 				{ userId },
-				{ $unset: { avatar: "" } },
+				{ $unset: { avatar: '' } },
 			);
 
-			return { success: true, name: { "deleted" } };
+			return { success: true, name: { deleted } };
 		} catch (error) {
 			return {
 				success: false,
@@ -117,15 +117,14 @@ class ImageService {
 
 	async deleteCourseImage(idCourse) {
 		try {
-			
 			await this.db.Menu.updateOne(
 				{
 					'courses._id': idCourse,
 				},
-				{ $unset: { 'courses.$.image': "" } },
+				{ $unset: { 'courses.$.image': '' } },
 			);
 
-			return { success: true, name: { "deleted" } };
+			return { success: true, name: { deleted } };
 		} catch (error) {
 			return {
 				success: false,
