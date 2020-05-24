@@ -303,7 +303,6 @@ class UserService {
 
 			const condition = { userId };
 			const options = {
-				upsert: true,
 				new: true,
 				useFindAndModify: false,
 			};

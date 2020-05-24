@@ -20,6 +20,7 @@ const CourseService = require('./CourseService');
 const menuService = new MenuService({
 	db: {
 		Menu,
+		Provider,
 	},
 	services: {},
 });
@@ -72,6 +73,7 @@ const clientService = new ClientService({
 const courseService = new CourseService({
 	db: {
 		Menu,
+		Provider,
 	},
 	services: {},
 });

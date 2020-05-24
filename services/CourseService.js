@@ -23,7 +23,7 @@ class CourseService {
 				},
 				{
 					$group: {
-						providerId: { $first: '$providerId' },
+						providerId: { $first: '$_id' },
 						_id: '$courses._id',
 						name: { $first: '$courses.name' },
 						category: { $first: '$courses.category' },
@@ -36,7 +36,10 @@ class CourseService {
 					},
 				},
 			]);
-
+			const user = mongoose.Types.ObjectId(
+				course[0].providerId,
+			);
+			course[0]['userId'] = user;
 			if (course.length === 0) throw new Error('Not found');
 			return { success: true, data: course };
 		} catch (error) {
