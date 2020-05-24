@@ -81,15 +81,51 @@ class ImageService {
 		}
 	}
 
-	async deleteMenuPhoto(buffer, hostname, idPhoto) {
+	async deleteProviderImage(userId){
 		try {
-			//idPhoto unique -- search db for it and delete it
-			//depend on which database
+			
+			await this.db.Provider.updateOne(
+				{ userId },
+				{ $unset: { images: "" } },
+			);
 
-			const response = 'not implemented yet';
-			//response is gonna be deleted or inexisting file
+			return { success: true, name: { "deleted" } };
+		} catch (error) {
+			return {
+				success: false,
+				error: 'Please provide a valid image!',
+			};
+		}
+	}
 
-			return { success: true, name: { response } };
+	async deleteClientImage(userId){
+		try {
+			
+			await this.db.Client.updateOne(
+				{ userId },
+				{ $unset: { avatar: "" } },
+			);
+
+			return { success: true, name: { "deleted" } };
+		} catch (error) {
+			return {
+				success: false,
+				error: 'Please provide a valid image!',
+			};
+		}
+	}
+
+	async deleteCourseImage(idCourse) {
+		try {
+			
+			await this.db.Menu.updateOne(
+				{
+					'courses._id': idCourse,
+				},
+				{ $unset: { 'courses.$.image': "" } },
+			);
+
+			return { success: true, name: { "deleted" } };
 		} catch (error) {
 			return {
 				success: false,

@@ -61,21 +61,37 @@ router.post(
 );
 
 router.post(
-	'/deletePhoto/:idPhoto',
+	'/deletePhotoProvider/:userId',
 	auth,
-	upload.single('myImage'),
 	async (req, res) => {
 		//console.log(req.params);
-		let { idPhoto } = req.params;
-		const result = await imageService.deleteImage(
-			req.file.buffer,
-			req.headers.host,
-			idPhoto,
-		);
+		let { userId } = req.params;
+		const result = await imageService.deleteProviderImage(userId);
 		res.status(setResponseStatus(201, 400, result.success)).json(
 			result,
 		);
 	},
 );
 
+router.post('/deletePhotoClient/:userId', auth, async (req, res) => {
+	//console.log(req.params);
+	let { userId } = req.params;
+	const result = await imageService.deleteClientImage(userId);
+	res.status(setResponseStatus(201, 400, result.success)).json(
+		result,
+	);
+});
+
+router.post(
+	'/deletePhotoProvider/:idCourse',
+	auth,
+	async (req, res) => {
+		//console.log(req.params);
+		let { idCourse } = req.params;
+		const result = await imageService.deleteCourseImage(userId);
+		res.status(setResponseStatus(201, 400, result.success)).json(
+			result,
+		);
+	},
+);
 module.exports = router;
