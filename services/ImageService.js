@@ -23,7 +23,7 @@ class ImageService {
 		} catch (error) {
 			return {
 				success: false,
-				error: 'Please provide a valid image!',
+				error: error,
 			};
 		}
 	}
