@@ -36,7 +36,7 @@ class CourseService {
 					},
 				},
 			]);
-			course['userId'] = this.db.Provider.findOne({
+			course['userId'] = await this.db.Provider.findOne({
 				_id: course.providerId,
 			});
 			console.log(course);
