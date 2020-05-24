@@ -333,7 +333,7 @@ class UserService {
 				}
 			}
 
-			const userNow = await this.db.User.findOne({
+			const userDetails = await this.db.User.findOne({
 				_id: userId,
 			});
 
@@ -364,16 +364,15 @@ class UserService {
 		}
 	}
 
-	async getUserByEmail(email){
-		try{
+	async getUserByEmail(email) {
+		try {
 			const user = await this.db.User.findByEmail(email);
-			console.log("am user-ul")
+			console.log('am user-ul');
 			return {
 				success: true,
 				data: user,
 			};
-
-		} catch(error){
+		} catch (error) {
 			Logger.error(error);
 			return {
 				success: false,
@@ -381,8 +380,6 @@ class UserService {
 			};
 		}
 	}
-
-	
 }
 
 module.exports = UserService;
