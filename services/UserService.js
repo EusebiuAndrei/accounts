@@ -332,7 +332,7 @@ class UserService {
 				}
 			}
 
-			const userDetails = await this.db.User.findOne({
+			const userNow = await this.db.User.findOne({
 				_id: userId,
 			});
 
