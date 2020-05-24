@@ -36,8 +36,10 @@ class CourseService {
 					},
 				},
 			]);
-			const user = await this.db.Provider.find({}).limit(1);
-			course[0]['userId'] = user;
+			const user = await this.db.Provider.find({
+				_id: course[0].providerId,
+			});
+			course[0]['userId'] = user[0];
 			if (course.length === 0) throw new Error('Not found');
 			return { success: true, data: course };
 		} catch (error) {
