@@ -83,7 +83,7 @@ router.post('/deletePhotoClient/:userId', auth, async (req, res) => {
 });
 
 router.post(
-	'/deletePhotoProvider/:idCourse',
+	'/deletePhotoCourse/:idCourse',
 	auth,
 	async (req, res) => {
 		//console.log(req.params);
