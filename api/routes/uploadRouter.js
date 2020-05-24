@@ -88,7 +88,7 @@ router.post(
 	async (req, res) => {
 		//console.log(req.params);
 		let { idCourse } = req.params;
-		const result = await imageService.deleteCourseImage(userId);
+		const result = await imageService.deleteCourseImage(idCourse);
 		res.status(setResponseStatus(201, 400, result.success)).json(
 			result,
 		);
